@@ -24,11 +24,14 @@ const nodeIconMap: Record<ArchitectureNodeType, React.ElementType> = {
   cdn: Zap,
   dns: Globe,
   load_balancer: Split,
+  "load-balancer": Split,
   api_gateway: ShieldCheck,
+  "api-gateway": ShieldCheck,
   service: Cpu,
   cache: Layers,
   database: Database,
   read_replica: Copy,
+  "read-replica": Copy,
   nosql: Table,
   queue: Inbox,
   worker: Server,
@@ -40,11 +43,14 @@ const nodeTypeColors: Record<ArchitectureNodeType, { bg: string; border: string;
   cdn: { bg: "bg-amber-500/10", border: "border-amber-500/30", text: "text-amber-400", badge: "bg-amber-500/20 text-amber-300" },
   dns: { bg: "bg-indigo-500/10", border: "border-indigo-500/30", text: "text-indigo-400", badge: "bg-indigo-500/20 text-indigo-300" },
   load_balancer: { bg: "bg-purple-500/10", border: "border-purple-500/30", text: "text-purple-400", badge: "bg-purple-500/20 text-purple-300" },
+  "load-balancer": { bg: "bg-purple-500/10", border: "border-purple-500/30", text: "text-purple-400", badge: "bg-purple-500/20 text-purple-300" },
   api_gateway: { bg: "bg-emerald-500/10", border: "border-emerald-500/30", text: "text-emerald-400", badge: "bg-emerald-500/20 text-emerald-300" },
+  "api-gateway": { bg: "bg-emerald-500/10", border: "border-emerald-500/30", text: "text-emerald-400", badge: "bg-emerald-500/20 text-emerald-300" },
   service: { bg: "bg-sky-500/10", border: "border-sky-500/30", text: "text-sky-400", badge: "bg-sky-500/20 text-sky-300" },
   cache: { bg: "bg-rose-500/10", border: "border-rose-500/30", text: "text-rose-400", badge: "bg-rose-500/20 text-rose-300" },
   database: { bg: "bg-teal-500/10", border: "border-teal-500/30", text: "text-teal-400", badge: "bg-teal-500/20 text-teal-300" },
   read_replica: { bg: "bg-cyan-500/10", border: "border-cyan-500/30", text: "text-cyan-400", badge: "bg-cyan-500/20 text-cyan-300" },
+  "read-replica": { bg: "bg-cyan-500/10", border: "border-cyan-500/30", text: "text-cyan-400", badge: "bg-cyan-500/20 text-cyan-300" },
   nosql: { bg: "bg-fuchsia-500/10", border: "border-fuchsia-500/30", text: "text-fuchsia-400", badge: "bg-fuchsia-500/20 text-fuchsia-300" },
   queue: { bg: "bg-yellow-500/10", border: "border-yellow-500/30", text: "text-yellow-400", badge: "bg-yellow-500/20 text-yellow-300" },
   worker: { bg: "bg-lime-500/10", border: "border-lime-500/30", text: "text-lime-400", badge: "bg-lime-500/20 text-lime-300" },
@@ -103,9 +109,9 @@ export const SystemDesignNode = memo(function SystemDesignNode({
         {data.capacityQps !== undefined && (
           <span className="flex items-center gap-1">
             <span className="text-foreground/70 font-medium">
-              {(Number(data.capacityQps) >= 1000
+              {Number(data.capacityQps) >= 1000
                 ? `${(Number(data.capacityQps) / 1000).toFixed(0)}k`
-                : data.capacityQps)}
+                : String(data.capacityQps)}
             </span>{" "}
             QPS
           </span>

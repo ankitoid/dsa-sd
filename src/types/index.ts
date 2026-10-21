@@ -1,90 +1,6 @@
 export type Difficulty = "Beginner" | "Intermediate" | "Advanced";
 export type ProblemDifficulty = "Easy" | "Medium" | "Hard";
 
-export type ArchitectureNodeType =
-  | "client"
-  | "cdn"
-  | "dns"
-  | "load-balancer"
-  | "api-gateway"
-  | "service"
-  | "cache"
-  | "database"
-  | "nosql"
-  | "read-replica"
-  | "queue"
-  | "worker"
-  | "storage";
-
-export interface ArchitectureCanvasNode {
-  id: string;
-  type: string;
-  position: { x: number; y: number };
-  data: {
-    label: string;
-    sublabel?: string;
-    nodeType: ArchitectureNodeType;
-    instances?: number;
-    description?: string;
-  };
-}
-
-export interface ArchitectureCanvasEdge {
-  id: string;
-  source: string;
-  target: string;
-  label?: string;
-  animated?: boolean;
-}
-
-export interface SystemDesignChallenge {
-  id: string;
-  slug: string;
-  title: string;
-  difficulty: ProblemDifficulty;
-  category: string;
-  estimatedTime: string;
-  scenario: string;
-  requirements: {
-    functional: string[];
-    nonFunctional: {
-      targetQps: number;
-      maxP99LatencyMs: number;
-      requiredAvailability: string;
-      dataDurability: string;
-    };
-  };
-  architectureRules: {
-    requiredNodeTypes: ArchitectureNodeType[];
-    forbiddenDirectConnections?: Array<[ArchitectureNodeType, ArchitectureNodeType]>;
-    mustHaveCache?: boolean;
-    mustHaveLoadBalancer?: boolean;
-    mustDecoupleAsync?: boolean;
-    minServiceReplicas?: number;
-  };
-  starterNodes: ArchitectureCanvasNode[];
-  starterEdges: ArchitectureCanvasEdge[];
-  hints: string[];
-  referenceExplanation: string;
-}
-
-export interface SimulationReport {
-  status: "PASSED" | "FAILED" | "WARNING";
-  score: number;
-  metrics: {
-    throughputQps: number;
-    p99LatencyMs: number;
-    availability: string;
-    cacheHitRate: number;
-    spofCount: number;
-    costTier: "Low" | "Medium" | "High" | "Enterprise";
-  };
-  passedChecks: string[];
-  warnings: string[];
-  errors: string[];
-  simulationLogs: string[];
-}
-
 export interface DSATopic {
   id: string;
   slug: string;
@@ -292,11 +208,14 @@ export type ArchitectureNodeType =
   | "cdn"
   | "dns"
   | "load_balancer"
+  | "load-balancer"
   | "api_gateway"
+  | "api-gateway"
   | "service"
   | "cache"
   | "database"
   | "read_replica"
+  | "read-replica"
   | "nosql"
   | "queue"
   | "worker"
