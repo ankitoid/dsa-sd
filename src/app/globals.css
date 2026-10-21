@@ -1,0 +1,134 @@
+@import "@xyflow/react/dist/style.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F7F7F5;
+  --surface: #FFFFFF;
+  --surface-muted: #F0F0ED;
+  --surface-dark: #121312;
+  
+  --foreground: #141414;
+  --foreground-muted: #686868;
+  --foreground-subtle: #989894;
+  
+  --border: #E7E7E4;
+  --border-dark: #272A27;
+
+  --accent: #B7F36B;
+  --accent-hover: #A8E85B;
+  --accent-muted: #95D844;
+  --accent-subtle: #EBFBD4;
+  --accent-text: #193103;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.dark {
+  --background: #101110;
+  --surface: #181A18;
+  --surface-muted: #212521;
+  --surface-dark: #0D0E0D;
+  
+  --foreground: #EDEDEB;
+  --foreground-muted: #9B9E9B;
+  --foreground-subtle: #676A67;
+  
+  --border: #262A26;
+  --border-dark: #1F221F;
+
+  --accent: #B7F36B;
+  --accent-hover: #C5F785;
+  --accent-muted: #9FE64E;
+  --accent-subtle: #1C2713;
+  --accent-text: #B7F36B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Fluid Typography */
+.text-display {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+.text-title-1 {
+  font-size: clamp(1.85rem, 3vw + 0.5rem, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.text-title-2 {
+  font-size: clamp(1.4rem, 2vw + 0.3rem, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.text-body-editorial {
+  font-size: clamp(1.0625rem, 1vw + 0.5rem, 1.2rem);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Code block styling */
+pre, code {
+  font-family: var(--font-mono);
+}
+
+/* Restrained scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
